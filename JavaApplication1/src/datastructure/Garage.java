@@ -5,6 +5,7 @@
 package datastructure;
 
 import java.util.LinkedList;
+import java.util.Iterator;
 
 /**
  *
@@ -14,12 +15,7 @@ public class Garage {
     private LinkedList<Vehicule> vehiculeList;
     
     public Garage() {
-    
-    }
-    
-    //Get vehiculeList
-    public LinkedList<Vehicule> getVehiculeList(){
-        return vehiculeList;
+        this.vehiculeList = new LinkedList<>();
     }
     
     //Get vehicule
@@ -29,6 +25,17 @@ public class Garage {
     
     //Add vehicule
     public void addVehicule(Vehicule vehiculeToAdd) {
+        
         this.vehiculeList.addLast(vehiculeToAdd);
+    }
+    
+    //Print all elements of vehiculeList
+    public void printAllVehicules(){
+        Iterator<Vehicule> itvehicule = this.vehiculeList.iterator();
+        
+        System.out.println("\nStart of elements of garage"); 
+        while(itvehicule.hasNext()) {    
+            itvehicule.next().print();
+        }
     }
 }
