@@ -6,6 +6,7 @@ package datastructure;
 import java.util.LinkedList;
 import java.util.Deque;
 import java.util.Iterator;
+import java.util.Hashtable;
 
 public class datastructure {
     public static void main(String[] args) {
@@ -55,15 +56,56 @@ public class datastructure {
             it2.next().print();
         }
         
-        
-        Printer sachaPrinter = new Printer();
+        //Initialization of my printers
+        Printer sachaPrinter = new Printer("Sacha");
+        Printer HugoPrinter = new Printer("Hugo");
+        Printer RobertPrinter = new Printer();
+        Printer RobertPrinter2 = new Printer();
+        Printer RobertPrinter3 = new Printer();
         
         
         sachaPrinter.addToWaitingList(new File("coucou.txt"));
         sachaPrinter.addToWaitingList(new File("text.txt"));
         sachaPrinter.addToWaitingList(new File("lol.png"));
         
-        System.out.println("\nStart of printer function");
-        sachaPrinter.print();
+        //System.out.println("\nStart of printer function");
+        //sachaPrinter.print();
+        //sachaPrinter.print();
+        
+        //Creating Hashtable for printers
+        Hashtable<String, Printer> printerTable = new Hashtable<>();
+        
+        //Adding printer to my hashtable
+        printerTable.put(sachaPrinter.getName(), sachaPrinter);
+        printerTable.put(HugoPrinter.getName(), HugoPrinter);
+        printerTable.put(RobertPrinter.getName(), RobertPrinter);
+        printerTable.put(RobertPrinter2.getName(), RobertPrinter);
+        printerTable.put(RobertPrinter3.getName(), RobertPrinter);
+        
+        //Adding file to my Printers
+        sachaPrinter.addToWaitingList(new File("lol.png"));
+        HugoPrinter.addToWaitingList(new File("fichier1.png"));
+        HugoPrinter.addToWaitingList(new File("fichier2.png"));
+        
+        //Retrieving Printer from Hashtable
+        System.out.println("\nPrint number of waiting list for each printers");
+        printerTable.get(sachaPrinter.getName()).printNumberWaiting();
+        printerTable.get(HugoPrinter.getName()).printNumberWaiting();
+        printerTable.get(RobertPrinter.getName()).printNumberWaiting();
+        printerTable.get(RobertPrinter2.getName()).printNumberWaiting();
+        printerTable.get(RobertPrinter3.getName()).printNumberWaiting();
+        
+        Bstnode binarytree = new Bstnode();
+    
+        binarytree.add(5);
+        binarytree.add(3);
+        binarytree.add(4);
+        binarytree.add(8);
+        binarytree.add(7);
+        binarytree.add(5);
+        
+        binarytree.printTree();
+        System.out.println(binarytree.countNode());
     }
+    
 }
